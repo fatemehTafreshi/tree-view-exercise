@@ -1,0 +1,19 @@
+.layout {
+    min-height: 100vh;
+}
+
+nz-sider {
+//overflow: auto;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    z-index: 99;
+}
+
+nz-content {
+    overflow: initial;
+}
+
+nz-footer {
+    text-align: center;
+}

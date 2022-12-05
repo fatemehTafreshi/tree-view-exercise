@@ -1,0 +1,60 @@
+<nz-layout style="min-height: 100vh">
+    <nz-sider
+            nzCollapsible
+            nzBreakpoint="xl"
+            [(nzCollapsed)]="isCollapsed"
+            [nzCollapsedWidth]="0"
+            [nzTrigger]="null"
+            nzTheme="light"
+            *ngIf="!isMobile; else mobileDrawer"
+    >
+        <app-layout-slider-menu></app-layout-slider-menu>
+    </nz-sider>
+    <ng-template #mobileDrawer>
+        <nz-drawer
+                [nzVisible]="!isCollapsed"
+                nzPlacement="right"
+                (nzOnClose)="isCollapsed = true"
+                [nzBodyStyle]="{ padding: 0 }"
+                [nzWidth]="320"
+        >
+            <ng-container *nzDrawerContent>
+              <app-layout-slider-menu></app-layout-slider-menu>
+            </ng-container>
+        </nz-drawer>
+    </ng-template>
+    <nz-layout
+            [ngStyle]="{
+      maxWidth: !isMobile
+        ? isCollapsed
+          ? '100%'
+          : 'calc(100% - 200px)'
+        : '100%',
+      transition: 'max-width 0.2s',
+      marginRight: !isMobile ? 'auto' : 0
+    }"
+    >
+        <nz-header style="border-bottom: 1px solid #f0f0f0; padding: 0; background-color: darksalmon">
+            <div class="container">
+                <div
+                        fxLayout="row"
+                        fxLayoutGap="16px"
+                        fxLayoutAlign="space-between center"
+                >
+                    <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center" fxFill>
+                        <div fxLayout="column" fxLayoutAlign="center">
+                            main header
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nz-header>
+
+        <nz-content>
+            <div class="my-3" style="background-color: #f5d3ab">
+
+            </div>
+        </nz-content>
+
+    </nz-layout>
+</nz-layout>
